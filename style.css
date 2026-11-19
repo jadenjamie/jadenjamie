@@ -29,6 +29,10 @@ figcaption { font-size: 14px; color: #666; margin-top: 6px; }
 footer { margin-top: 50px; border-top: 1px solid #ddd; padding-top: 15px; color: #888; font-size: 12px; font-family: Arial, sans-serif; }
 @media (max-width: 600px) { .site { padding: 21px 18px 35px; } .site-header { align-items: flex-start; flex-direction: column; gap: 10px; } .intro { grid-template-columns: 1fr; gap: 18px; } .portrait { width: 160px; height: 194px; } h1 { font-size: 29px; } .photo-grid { grid-template-columns: 1fr; } }
 
+
 .photo-grid figure:first-child img {
-  object-position: center top;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
+
