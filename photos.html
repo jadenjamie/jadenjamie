@@ -31,5 +31,95 @@
     </main>
     <footer>© 2026 Your Name</footer>
   </div>
+  
+<style>
+  .photo-grid img {
+    cursor: zoom-in;
+  }
+
+  #photo-lightbox {
+    background: #171717;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 18px;
+    max-width: 96vw;
+    max-height: 96vh;
+  }
+
+  #photo-lightbox::backdrop {
+    background: rgba(0, 0, 0, 0.9);
+  }
+
+  #photo-lightbox img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 75vh;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  #lightbox-caption {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 15px;
+    color: white;
+  }
+
+  #close-lightbox {
+    display: block;
+    margin: 0 0 12px auto;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+  }
+</style>
+
+<dialog id="photo-lightbox">
+  <button id="close-lightbox">✕ Close</button>
+  <img id="lightbox-image" alt="">
+  <p id="lightbox-caption"></p>
+</dialog>
+
+<script>
+  const lightbox = document.getElementById("photo-lightbox");
+
+  document.querySelectorAll(".photo-grid figure img").forEach(img => {
+    img.tabIndex = 0;
+    img.setAttribute("role", "button");
+
+    const openPhoto = () => {
+      const figure = img.closest("figure");
+      const caption = figure.querySelector("figcaption");
+
+      document.getElementById("lightbox-image").src = img.src;
+      document.getElementById("lightbox-image").alt = img.alt;
+      document.getElementById("lightbox-caption").textContent =
+        caption ? caption.textContent : "";
+
+      lightbox.showModal();
+    };
+
+    img.addEventListener("click", openPhoto);
+    img.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openPhoto();
+      }
+    });
+  });
+
+  document.getElementById("close-lightbox").onclick =
+    () => lightbox.close();
+
+  lightbox.addEventListener("click", event => {
+    if (event.target === lightbox) lightbox.close();
+  });
+</script>
+
 </body>
 </html>
