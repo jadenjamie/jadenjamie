@@ -7,6 +7,44 @@
   <meta name="description" content="Personal website of Your Name: education, projects, and interests.">
   <title>Jaden Jamieson's Portfolio</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .section-toggle > summary {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      list-style: none;
+      cursor: pointer;
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .section-toggle > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .section-toggle > summary::marker {
+      content: "";
+    }
+
+    .section-toggle > summary h2 {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .section-toggle > summary::after {
+      content: "▾";
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .section-toggle:not([open]) > summary::after {
+      content: "▸";
+    }
+  </style>
 </head>
 <body>
   <div class="site">
@@ -38,8 +76,8 @@
       </section>
 
       <section aria-labelledby="about-heading">
-        <details open>
-          <summary style="cursor: pointer;">
+        <details class="section-toggle" open>
+          <summary>
             <h2 id="about-heading">About</h2>
           </summary>
           <p>I originally studied computer science before transitioning to mathematics, giving me a background in programming and an appreciation for both the theoretical and computational sides of problem-solving. My academic interests lie at the intersection of applied mathematics and business, particularly how data-driven methods can be used to address problems in finance and financial technology.
@@ -58,19 +96,13 @@ I'm currently applying to UT Austin's Bridge program for the M.S. in Business An
             </a>
           </h3>
           <p><strong>2025 · Applied Linear Algebra</strong></p>
-          <p>
-            Designed a feedforward neural network to predict Iris
-            flower petal length using three input features.
-            Manually computed forward propagation, derived
-            backpropagation gradients using the chain rule,
-            and verified the results against Python implementations.
-          </p>
+        
         </article>
       </section>
 
       <section aria-labelledby="interests-heading">
-        <details open>
-          <summary style="cursor: pointer;">
+        <details class="section-toggle" open>
+          <summary>
             <h2 id="interests-heading">Outside of academics</h2>
           </summary>
           <p>I'm a sports reporter for The Daily Texan, where I cover Texas Longhorns athletics. I also enjoy robotics, playing golf, fishing, and spending time outdoors. I'm a big college football fan and enjoy photography, with some of my favorite pictures featured on my <a href="photos.html">photos page</a>.</p>
